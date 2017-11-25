@@ -12,10 +12,11 @@
 					<a class="nav-link js-scroll-trigger" href="#download">About</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#features">Features</a>
+					<a class="nav-link js-scroll-trigger" href="https://twitter.com/rizasabuncu" target="_blank">@rizasabuncu</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+				<li class="nav-item" style="margin-top:2%">
+					<!-- Place this tag where you want the button to render. -->
+					<a  class="github-button" href="https://github.com/riza/shout" data-icon="octicon-star" data-show-count="true" aria-label="Star riza/shout on GitHub">Star</a>
 				</li>
 			</ul>
 		</div>
@@ -30,22 +31,22 @@
 				</div>
 			</div>
 			<div class="col-lg-6 my-auto">
-				<div id="peer-camera">
-					<video autoplay muted  width="500" height="500" ></video>
+				<div id="peer-camera" style="display:none">
+					<video autoplay  width="500" height="500" ></video>
 				</div>
 				<div class="header-content mx-auto share-content">
 					<h1 class="mb-2">
 					Start talk quickly!</h1>
 					<h4 class="mb-4">
-					Waiting a connection..</h4>
-					<div class="mb-3 uniq_url">
-						<input type="text" name="uniq_url" class="form-control" id="uniq_url" value="Loading.." readonly>
+						<i class="fa fa-spinner fa-pulse fa-fw"></i> Waiting a connection..</h4>
+						<div class="mb-3 uniq_url">
+							<input type="text" name="uniq_url" class="form-control" id="uniq_url" value="Loading.." readonly>
+						</div>
+						<a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Share this!</a>
 					</div>
-					<a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Share this!</a>
 				</div>
+
 			</div>
-			
 		</div>
-	</div>
-</header>
-{{> footer}}
+	</header>
+	{{> footer}}

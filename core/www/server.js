@@ -16,20 +16,22 @@ class HTTP {
 		// P2P Options
 
 		this.options = {
-			debug: true
+			debug: (config.env == 'dev') ? true : false
 		}
+		
+		const traversal = (config.env == 'prod') ? '/../../' : '../../../';
 
-		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + '../../../node_modules/bootstrap/dist/js'));
-		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + '../../../node_modules/jquery/dist')); 
-		this.app.use('/vendor/bootstrap/css', this.express.static(__dirname + '../../../node_modules/bootstrap/dist/css')); 
-		this.app.use('/vendor/jquery', this.express.static(__dirname + '../../../node_modules/jquery/dist'));
-		this.app.use('/vendor/socket.io', this.express.static(__dirname + '../../../node_modules/socket.io-client/dist'));
+		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + traversal +'node_modules/bootstrap/dist/js'));
+		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + traversal +'node_modules/jquery/dist')); 
+		this.app.use('/vendor/bootstrap/css', this.express.static(__dirname + traversal +'node_modules/bootstrap/dist/css')); 
+		this.app.use('/vendor/jquery', this.express.static(__dirname + traversal +'node_modules/jquery/dist'));
+		this.app.use('/vendor/socket.io', this.express.static(__dirname + traversal +'node_modules/socket.io-client/dist'));
 
 		this.app.use('/peerjs', this.peer(this.http, this.options));
 
 		this.app.set('partialsDir')
 		this.app.get('/', (req, res) => res.render('index'));
-		this.http.listen(config.port, () => console.log(`(INFO) HTTP Server Runnning on ${config.port}`));
+		this.http.listen(config.port, () => console.log(`[!] HTTP Server Runnning on ${config.port}`));
 
 		return this.http;
 	}

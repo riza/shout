@@ -45,7 +45,8 @@ $(() => {
           call.answer(stream); 
           call.on('stream', function(remoteStream) {
             onReceiveStream(remoteStream, 'peer-camera');
-            alert('Answered peer');
+            $(".share-content").fadeOut();
+            $("#peer-camera").fadeIn();
           });
         }, function(err) {
           console.log('Failed to get local stream' ,err);
@@ -58,16 +59,15 @@ $(() => {
 
   } else {
     // conncect
-    $(".share-content").fadeOut();
-    $(".peer-camera").fadeIn();
-
+    
     peer_id = location.hash.replace('#','');
 
     navigator.getUserMedia({video: true, audio: true}, function(stream) {
       var call = peer.call(peer_id, stream);
       call.on('stream', function(remoteStream) {
         onReceiveStream(remoteStream, 'peer-camera');
-        alert('connected peer');
+        $(".share-content").fadeOut();
+        $("#peer-camera").fadeIn();
       });
     }, function(err) {
       console.log('Failed to get local stream' ,err);
