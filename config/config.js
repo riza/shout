@@ -1,7 +1,7 @@
 class Config {
 constructor(env) {
     this.env = env;
-	this.host = "localhost";
+	this.host = "192.168.1.32";
 	this.port = 3000;
 	
 	this.db = {

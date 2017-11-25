@@ -5,7 +5,7 @@ class HTTP {
 		this.app = this.express();
 		this.http = require('http').Server(this.app);
 		this.hbs  = require('hbs');
-		
+		this.peer = require('peer').ExpressPeerServer;
 
 		this.hbs.registerPartials(__dirname + '/views/partials');
 
@@ -13,6 +13,11 @@ class HTTP {
 		this.app.set('view engine', 'hbs');
 		this.app.set('views', __dirname + '/views');
 
+		// P2P Options
+
+		this.options = {
+			debug: true
+		}
 
 		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + '../../../node_modules/bootstrap/dist/js'));
 		this.app.use('/vendor/bootstrap/js', this.express.static(__dirname + '../../../node_modules/jquery/dist')); 
@@ -20,12 +25,12 @@ class HTTP {
 		this.app.use('/vendor/jquery', this.express.static(__dirname + '../../../node_modules/jquery/dist'));
 		this.app.use('/vendor/socket.io', this.express.static(__dirname + '../../../node_modules/socket.io-client/dist'));
 
-
+		this.app.use('/peerjs', this.peer(this.http, this.options));
 
 		this.app.set('partialsDir')
 		this.app.get('/', (req, res) => res.render('index'));
-		// this.app.listen(config.port, () => console.log(`(INFO) HTTP Server Runnning on ${config.port}`));
 		this.http.listen(config.port, () => console.log(`(INFO) HTTP Server Runnning on ${config.port}`));
+
 		return this.http;
 	}
 }
