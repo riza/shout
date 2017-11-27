@@ -50,7 +50,7 @@ $(() => {
 
 function onReceiveStream(stream, element_id) {
   var video = $('#' + element_id + ' video')[0];
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
   video.setAttribute('autoplay', '');
   video.setAttribute('playsinline', '');
   window.peer_stream = stream;
