@@ -15,7 +15,7 @@ $(() => {
     console.log(id);
   });
 
-  navigator.getUserMedia = navigator.getUserMedia || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 
   function getVideo(callback) {
@@ -31,7 +31,7 @@ $(() => {
 
   function onReceiveStream(stream, element_id) {
     var video = $('#' + element_id + ' video')[0];
-    video.src = stream;
+    video.src = window.URL.createObjectURL(stream);
     window.peer_stream = stream;
   }
 
