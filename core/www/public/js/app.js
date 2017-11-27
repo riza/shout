@@ -4,8 +4,14 @@ window.mobilecheck = function() {
   return check;
 };
 
+var a = document.width;
 $(() => {
-  console.log(mobilecheck());
+  if (mobilecheck()) {
+    $("header").width(`${a}`);
+    $("header").css(`padding-top`,'0px');
+
+
+  }
   var conn, peer_id, call;
   var ayo = io();
 
@@ -53,6 +59,9 @@ function onReceiveStream(stream, element_id) {
   video.srcObject = stream;
   video.setAttribute('autoplay', '');
   video.setAttribute('playsinline', '');
+  if (mobilecheck()) {
+    video.style.width = document.width + 'px';
+  }
   window.peer_stream = stream;
 }
 
