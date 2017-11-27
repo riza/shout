@@ -28,7 +28,7 @@ $(() => {
     if (mobilecheck()) {
 
       var constraints = {
-       audio: false,
+       audio: true,
        video: {
          facingMode: 'user'
        }
