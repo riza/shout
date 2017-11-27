@@ -50,12 +50,10 @@ $(() => {
 
 function onReceiveStream(stream, element_id) {
   var video = $('#' + element_id + ' video')[0];
-  if (mobilecheck()) {
-    video.src = stream;
-  } else {
   video.src = window.URL.createObjectURL(stream);
-}
-window.peer_stream = stream;
+  video.setAttribute('autoplay', '');
+  video.setAttribute('playsinline', '');
+  window.peer_stream = stream;
 }
 
 getVideo(function(stream) {
