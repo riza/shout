@@ -26,7 +26,7 @@ $(() => {
 
   function getVideo(callback) {
     if (mobilecheck()) {
-   
+
       var constraints = {
        audio: false,
        video: {
@@ -50,8 +50,12 @@ $(() => {
 
 function onReceiveStream(stream, element_id) {
   var video = $('#' + element_id + ' video')[0];
+  if (mobilecheck()) {
+    video.src = stream;
+  } else {
   video.src = window.URL.createObjectURL(stream);
-  window.peer_stream = stream;
+}
+window.peer_stream = stream;
 }
 
 getVideo(function(stream) {
