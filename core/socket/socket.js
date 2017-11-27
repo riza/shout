@@ -4,8 +4,12 @@ class Socket {
 		this.socket = require('socket.io')(http);
 		
 		this.socket.on('connection', function(socket){
-			console.log('a user connected');
+			socket.on('peers', (msg) => {
+				socket.emit('peers', msg);
+				console.log(msg);
+			});
 		});
+
 
 	}
 }

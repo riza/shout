@@ -1,6 +1,7 @@
 $(() => {
 
   var conn, peer_id, call;
+  var ayo = io();
 
   var peer = new Peer({port:3000,host:'/',path:'/peerjs',debug: 3,
     config: {'iceServers': [
@@ -9,6 +10,13 @@ $(() => {
     credential: 'muazkh', username: 'webrtc@live.com' }
     ]}
   });
+
+  peer.on('connection',function(id){
+    console.log(id);
+  });
+
+  navigator.getUserMedia = navigator.getUserMedia || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
 
   function getVideo(callback) {
     navigator.getUserMedia(
@@ -23,7 +31,7 @@ $(() => {
 
   function onReceiveStream(stream, element_id) {
     var video = $('#' + element_id + ' video')[0];
-    video.src = window.URL.createObjectURL(stream);
+    video.src = stream;
     window.peer_stream = stream;
   }
 
@@ -39,7 +47,6 @@ $(() => {
     setTimeout(() => {
       uniqueToken.value = location.href + "#" + peer.id; 
 
-      var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
       peer.on('call', function(call) {
         navigator.getUserMedia({video: true, audio: true}, function(stream) {
           call.answer(stream); 
@@ -53,8 +60,9 @@ $(() => {
         });
       });
 
-    },2000);
+      
 
+    },2000);
 
 
   } else {
@@ -93,5 +101,9 @@ $(() => {
   //     onReceiveStream(stream, 'peer-camera');
   //   });
   // }
+
+  window.onbeforeunload = function(e) {
+   peer.destroy();
+ };
 
 });

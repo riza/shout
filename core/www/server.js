@@ -16,7 +16,8 @@ class HTTP {
 		// P2P Options
 
 		this.options = {
-			debug: (config.env == 'dev') ? true : false
+			debug: (config.env == 'dev') ? true : false,
+			allow_discovery: true
 		}
 		
 		const traversal = (config.env == 'prod') ? '/../../' : '../../../';
@@ -31,6 +32,12 @@ class HTTP {
 
 		this.app.set('partialsDir')
 		this.app.get('/', (req, res) => res.render('index'));
+		
+		this.app.get('/peers',() => {
+
+		});
+
+
 		this.http.listen(config.port, () => console.log(`[!] HTTP Server Runnning on ${config.port}`));
 
 		return this.http;
