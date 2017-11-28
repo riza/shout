@@ -15,7 +15,7 @@ $(() => {
   var conn, peer_id, call;
   var ayo = io();
 
-  var peer = new Peer({port:3000,host:'localhost',path:'/peerjs',debug: 3,
+  var peer = new Peer({port:443,host:'shoutnow.me',path:'/peerjs',debug: 3,
     config: {'iceServers': [
     { url: 'stun:stun1.l.google.com:19302' },
     { url: 'turn:numb.viagenie.ca',
