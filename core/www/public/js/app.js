@@ -6,7 +6,6 @@ window.mobilecheck = function() {
 };
 
 $(() => {
-  console.log(mobilecheck());
   var conn, peer_id, call;
   var ayo = io();
 
@@ -17,11 +16,6 @@ $(() => {
     credential: 'muazkh', username: 'webrtc@live.com' }
     ]}
   });
-
-  peer.on('connection',function(id){
-    console.log(id);
-  });
-
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 
@@ -52,8 +46,8 @@ $(() => {
 function onReceiveStream(stream, element_id) {
   var video = $('#' + element_id + ' video')[0];
   video.srcObject = stream;
-  video.setAttribute('autoplay', '');
-  video.setAttribute('playsinline', '');
+  // video.setAttribute('autoplay', '');
+  // video.setAttribute('playsinline', '');
   window.peer_stream = stream;
 }
 
