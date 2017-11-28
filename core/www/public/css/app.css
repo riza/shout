@@ -390,7 +390,7 @@ footer ul li a.active {
 }
 /* Custom, iPhone Retina */ 
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
  #mainNav {
     border-color: transparent;
     background-color: transparent;
@@ -404,4 +404,4 @@ footer ul li a.active {
   header.masterhead {
     padding-top: 0px !important;
   }
-}
+}*/
