@@ -57,10 +57,6 @@ function copyToClipboard(elem) {
 
 $(() => {
 
-  if (mobilecheck()) {
-    $("header").width(`${document.width}`);
-    $("header").css(`padding-top`,'0px');
-  }
 
   var conn, peer_id, call;
   var ayo = io();
@@ -71,10 +67,6 @@ $(() => {
     { url: 'turn:numb.viagenie.ca',
     credential: 'muazkh', username: 'webrtc@live.com' }
     ]}
-  });
-
-  peer.on('connection',function(id){
-    console.log(id);
   });
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -109,9 +101,7 @@ $(() => {
 function onReceiveStream(stream, element_id) {
   var video = $('#' + element_id + ' video')[0];
   video.srcObject = stream;
-  if (mobilecheck()) {
-    video.style.width = document.width + 'px';
-  }
+ 
   window.peer_stream = stream;
 }
 
