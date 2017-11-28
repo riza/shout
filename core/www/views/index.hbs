@@ -1,5 +1,5 @@
 {{> header}}
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+{{!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
 		<a class="navbar-brand js-scroll-trigger" href="#page-top">Shout!</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,5 +47,55 @@
 
 			</div>
 		</div>
-	</header>
-	{{> footer}}
+	</header> --}}
+
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">Shout!</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fa fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#download">VIDEO</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#download">/</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#download">VOICE</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<header class="masthead">
+		<div class="container h-100">
+			<div class="row h-100">
+				<div class="col-lg-6 my-auto">
+					<div id="my-camera">
+						<video muted  width="500" height="500" autoplay playsinline></video>
+					</div>
+				</div>
+				<div class="col-lg-6 my-auto">
+					<div id="peer-camera" style="display:none">
+						<video  width="500" height="500" autoplay playsinline></video>
+					</div>	
+					<div class="header-content mx-auto share-content">
+						<h1 class="mb-2">
+						Start talk quickly!</h1>
+						<h4 class="mb-4">
+							<i class="fa fa-spinner fa-pulse fa-fw"></i> Waiting a connection..</h4>
+							<div class="mb-3 uniq_url">
+								<input type="text" name="uniq_url" class="form-control" id="uniq_url" value="Loading.." readonly>
+							</div>
+							<a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Share this!</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+		{{> footer}}
