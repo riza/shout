@@ -112,11 +112,11 @@ function onReceiveStream(stream, element_id) {
   if (mobilecheck()) {
     video.style.width = document.width + 'px';
   }
-  window.peer_stream = stream;
+  // window.peer_stream = stream;
 }
 
 getVideo(function(stream) {
-  window.localStream = stream;
+  // window.localStream = stream;
   onReceiveStream(stream, 'my-camera');
 });
 
